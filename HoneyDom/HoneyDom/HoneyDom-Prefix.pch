@@ -1,0 +1,11 @@
+//
+// Prefix header for all source files of the 'HoneyDom' target in the 'HoneyDom' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
+
+#ifndef HDLog
+#define HDLog NSLog
+#endif
