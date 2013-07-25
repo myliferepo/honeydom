@@ -199,6 +199,8 @@ static BOOL xmlXPathIsInit = NO;
 #pragma mark Properties extraction
 
 - (NSString *)tagName {
+    if (!self.nodePointer) return nil;
+
     if (self.nodePointer->name == NULL || strcmp("text", (char const *)self.nodePointer->name) == 0) {
         return nil;
     } else {
@@ -207,6 +209,8 @@ static BOOL xmlXPathIsInit = NO;
 }
 
 - (NSDictionary *)attributes {
+    if (!self.nodePointer) return nil;
+
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:16];
     
     xmlAttrPtr attr = self.nodePointer->properties;
@@ -225,6 +229,8 @@ static BOOL xmlXPathIsInit = NO;
 }
 
 - (NSArray *)children {
+    if (!self.nodePointer) return nil;
+
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:32];
     
     xmlNodePtr childNode = self.nodePointer->children;
@@ -237,6 +243,8 @@ static BOOL xmlXPathIsInit = NO;
 }
 
 - (NSString *)characters {
+    if (!self.nodePointer) return nil;
+
     return [self constXmlString:self.nodePointer->content];
 }
 
